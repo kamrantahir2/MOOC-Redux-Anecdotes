@@ -7,6 +7,7 @@ const Notification = () => {
     border: "2px solid green",
     padding: 10,
     textAlign: "center",
+    marginBottom: 10,
   };
 
   return <div style={notification && style}>{notification}</div>;
