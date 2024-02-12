@@ -39,6 +39,10 @@ const anecdoteSlice = createSlice({
       state.push(asObject(action.payload));
       return state.sort(compareByVotes);
     },
+    // returnAnecdote(state, action) {
+    //   const id = action.payload;
+    //   return JSON.parse(JSON.stringify(state.find((a) => a.id === id)));
+    // },
   },
 });
 
@@ -46,6 +50,6 @@ const compareByVotes = (a, b) => {
   return b.votes - a.votes;
 };
 
-export const { addVote, addAnecdote } = anecdoteSlice.actions;
+export const { addVote, addAnecdote, returnAnecdote } = anecdoteSlice.actions;
 
 export default anecdoteSlice.reducer;
