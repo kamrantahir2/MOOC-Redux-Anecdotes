@@ -1,9 +1,9 @@
-const filterReducer = (state = null, action) => {
+import store from "../main";
+
+const filterReducer = (state = "", action) => {
   switch (action.type) {
     case "FILTER":
-      return state.filter((e) => {
-        return e.contains(action.payload);
-      });
+      return action.payload;
     default:
       return state;
   }

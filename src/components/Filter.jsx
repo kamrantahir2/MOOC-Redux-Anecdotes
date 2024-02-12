@@ -3,7 +3,11 @@ import { filterChange } from "../reducers/filterReducer";
 import { useDispatch } from "react-redux";
 
 const Filter = () => {
-  const handleChange = (event) => {};
+  const dispatch = useDispatch();
+  const handleChange = (event) => {
+    const search = event.target.value;
+    dispatch(filterChange(search));
+  };
 
   const style = {
     marginBottom: 10,
