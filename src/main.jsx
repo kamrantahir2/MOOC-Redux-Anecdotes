@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom/client";
-import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import App from "./App";
-import anecdoteReducer from "./reducers/anecdoteReducer";
+import anecdoteReducer, { setAnecdotes } from "./reducers/anecdoteReducer";
 import filterReducer from "./reducers/filterReducer";
 import { configureStore } from "@reduxjs/toolkit";
 import notificationReducer from "./reducers/notificationReducer";
+import anecdotesService from "./services/anecdotesService";
 
 const store = configureStore({
   reducer: {
@@ -13,6 +13,10 @@ const store = configureStore({
     filter: filterReducer,
     notification: notificationReducer,
   },
+});
+
+anecdotesService.getAll().then((anecdotes) => {
+  store.dispatch(setAnecdotes(anecdotes));
 });
 
 store.subscribe(() => console.log(store.getState()));
